@@ -1,0 +1,114 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<style scoped>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<h1>Listado de Productos, Categoria: SmartWatch</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Precio</th>
+    </tr>
+    @foreach (var product in Model.ProductosCategoria)
+    {
+        <tr>
+            <td>
+                @product.id
+            </td>
+            <td>
+                @product.nombre
+            </td>
+            <td>
+                @product.marca
+            </td>
+            <td>
+                @product.modelo
+            </td>
+            <td>
+                @string.Format("{0:#,0.00}", product.precio)
+            </td>
+
+        </tr>
+    }
+</table>
+<br />
+<br />
+
+<h1>Listado de Productos, Precio >= 3000 y precio<=5000</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Precio</th>
+    </tr>
+    @foreach (var product in Model.ProductosFiltrados)
+    {
+        <tr>
+            <td>
+                @product.id
+            </td>
+            <td>
+                @product.nombre
+            </td>
+            <td>
+                @product.marca
+            </td>
+            <td>
+                @product.modelo
+            </td>
+            <td>
+                @string.Format("{0:#,0.00}", product.precio)
+            </td>
+
+        </tr>
+    }
+</table>
+<br />
+<br />
+
+<h1>Listado de Categorias con Productos</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+    </tr>
+    @foreach (var category in Model.CategoriasProductosRegistrados)
+    {
+        <tr>
+            <td>
+                @category.id
+            </td>
+            <td>
+                @category.nombre
+            </td>
+
+
+        </tr>
+    }
+</table>
+
